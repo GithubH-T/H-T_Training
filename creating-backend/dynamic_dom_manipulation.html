@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function validate(event) { //ECMA 5
+        //     console.log(event.target.value);
+        //     if(event.target.value != ""){
+        //         event.target.style.backgroundColor='green';
+        //     }
+        // }
+
+        const validate = (event) => {//ES6
+            console.log(event.target.value);
+            // if (event.target.value != "") {
+            //     event.target.style.backgroundColor = 'green';
+            // }else{
+            //     event.target.style.backgroundColor = 'red';
+            // }
+            const result = event.target.value.trim() ;
+            event.target.style.backgroundColor = result != "" ? 'green' : 'red'; //ternary operator
+            event.target.style.color = result != "" ? 'white' : 'black';
+        }
+        function handleClick(event) {
+            console.log(event);
+        }
+    </script>
+</head>
+
+<body>
+    <input onkeyup="validate(event)" onclick='handleClick(event)'>
+</body>
+
+</html>
