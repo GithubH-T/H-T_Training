@@ -1,0 +1,147 @@
+<html>
+
+<head>
+    <Title>
+        WebForm
+    </Title>
+    <h1>New WebForm</h1>
+
+    <style id='mystyle'> 
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            display: inline;
+        }
+
+        input[type=button] {
+            background-color: lightblue;
+        }
+
+        .col-25 {
+            float: left;
+            width: 50%;
+            margin-top: 6px;
+            padding: 20px;
+        }
+
+        #col {
+            float: right;
+            width: 50%;
+            margin-top: 6px;
+            padding: 30px;
+            display: block;
+        }
+
+        p {
+            color: grey
+        }
+    </style>
+</head>
+
+<body id='mybody'>
+
+
+    <div class="container">
+        <form>
+            <div class="col-25">
+                <label>Title</label><br>
+                <input id='Title' type="text" value=""><br><br><br>
+                <label>Route</label><br>
+                <input id='Route' type="text" value=""><br><br><br>
+                <label>Select Doctype</label><br>
+                <input id='Doctype' type="text" value=""><br><br><br>
+                <label>Module</label><br>
+                <input id='Module' type="text" value=""><br><br><br>
+
+                <input type="button" onclick=save() value="Save">
+                <input type="button" onClick="change()" value="Get Fields" id="fieldButton">
+            </div>
+        </form>
+
+        <form>
+            <div id="col">
+                <div class="form-check">
+                    <input type="checkbox">Is Standard</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Published</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Login Required</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Route to success link</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Allow Edit</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Allow Multiple</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Show as Grid</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Allow Delete</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Allow Print</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Allow Comments</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Show Attachments</label>
+                </div><br>
+                <div class="form-check">
+                    <input type="checkbox">Allow Incomplete forms</label>
+                </div>
+                <p>Allow saving if mandatory fields are not filled</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function save() {
+            const payload = {
+                Title: document.getElementById('Title').value,
+                Route: document.getElementById('Route').value,
+                Doctype: document.getElementById('Doctype').value,
+                Module: document.getElementById("Module").value
+            }
+            fetch("http://localhost:3000/orders", {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        }
+        function change() {
+            let myField = document.getElementById('mystyle');
+            let displayField = myField.mystyle.col.display;
+            let fieldButton = document.getElementById('fieldButton');
+
+            if (displayField == 'block') {
+                myField.mystyle.col.display = 'none',
+                fieldButton.innerHTML = 'Show Field';
+            }
+            else {
+                myField.mystyle.col.display = 'block';
+                fieldButton.innerHTML = 'Hide Field';
+            }
+        }
+        // function change() {
+        //     document.getElementById('col').display = "block";
+        // }
+    </script>
+</body>
+
+</html>
