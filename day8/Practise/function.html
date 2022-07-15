@@ -1,0 +1,22 @@
+<html>
+    <Script>
+        function fall(a) {
+            // console.log(a);             
+            // console.log(arguments[2]);  //returns the mentioned argument only
+            //console.log(arguments);  //returns all the values passed as an Object not an array
+            // console.log(arguments.length); // to get the number of arguments passed
+            console.log(typeof arguments);
+            const arg = Object.values(arguments);  // object can be converted into an array by Object.keys(), Object.   values() and Object.entries()
+            arg.forEach(function(e) { //forEach is a callback function
+                console.log('test', e);
+            })
+        }
+        fall(1,2,3);
+        // fall('ram', 1);
+        // fall();
+    </Script>
+    <body>
+        <div id="arg">
+         </div>   
+    </body>
+</html>

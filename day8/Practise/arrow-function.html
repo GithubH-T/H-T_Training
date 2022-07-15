@@ -1,0 +1,18 @@
+<html>
+    <title>arrow-function</title>
+    <body id = 'mybody'>
+        <script>
+            //arguments does not work in arrow function
+            const fall = (numbers) => {     //one way to define arrow functions
+                const bodyTag = document.getElementById('mybody');
+
+                numbers.forEach((value) => {          //second way of defining arrow functions
+                    const newDiv = document.createElement('input');
+                    newDiv.arguments = value;
+                    bodyTag.appendChild(newDiv);
+                });
+            }
+            fall([1, 2, 3]);
+        </script>
+    </body>
+</html>

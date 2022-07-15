@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <Title>
+        Practise
+    </Title>
+</head>
+
+<body id='mybody'>
+    
+    <script>
+        function dynamicDivs(a) {
+            const content = Object.values(arguments);
+            const bodyTag = document.getElementById('mybody');
+            content.forEach(element => {
+                const divTag = document.createElement('div');
+                divTag.innerHTML = element
+                bodyTag.appendChild(divTag)
+            });
+        }
+        dynamicDivs(1, 2, 3);
+    </script>
+</body>
+
+</html>

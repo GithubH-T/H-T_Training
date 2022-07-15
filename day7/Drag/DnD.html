@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <style>
+        img {
+            height: 90px;
+            width: 130px;
+        }
+    </style>
+    <script>
+        function allowDrop(e) { e.preventDefault(); }
+        function drag(ev) { ev.dataTransfer.setData("text/html", ev.target.id); }
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text/html");
+            ev.target.appendChild(document.getElementById(data));
+            const width = ev.target.width;
+            const height = ev.target.height;
+        }
+    </script>
+    <p>Drag the javatpoint image into the rectangle:</p>
+    <div id="div1" style="width:350px;height:100px;padding:10px;border:1px solid #aaaaaa;" ondrop="drop(event)"
+        ondragover="allowDrop(event)"></div>
+    <br>
+    <img id="drag1" src="image.png" alt="javatpoint image" draggable="true" ondragstart="drag(event)" />
+    <br>
+    Dimensions:<div>
+        width: <img ev.target.width="pixels">
+        <br>
+        height: <image  ev.target.height="pixels"></image>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <script>
+        let arr = [1, 2, 3];
+    function demo2(arr) {
+            //1,2,6,3,5
+            const firstPart = arr.slice(0,2);
+            console.log(firstPart);
+            const secondPart = arr.slice(2,3);
+            console.log(secondPart);
+            console.log([...firstPart, 6, ...secondPart, 5]);   //[1, 2, 6, 3, 5]
+            // const final= [...firstPart, 6, ...secondPart];
+            // console.log(final);                            //[1, 2, 6, 3]
+    }
+        demo2(arr);
+    function demo1(arr) {
+        console.log(arr);
+        arr.push(5);   ///// updates existing
+        console.log(arr);
+        //1,2,6,3,5
+        const newArray = [...arr, 6]; //spread operator, create new array
+        //arr.splice(1, 6);
+        console.log(arr);
+        console.log(newArray);
+        //1,2,6,3,5
+    }
+    </script>
+</html>
