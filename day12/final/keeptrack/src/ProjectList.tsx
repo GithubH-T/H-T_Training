@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Project } from './project';
 import ProjectCard from "./ProjectCard"
 import ProjectForm from "./ProjectForm"
@@ -6,11 +6,13 @@ import ProjectForm from "./ProjectForm"
 
 interface ProjectListProps {
     project: Project[];
-    onSave: (project:Project) => void;
+    // onSave: (project: Project) => void;
 }
-function ProjectList({ project, onSave }: ProjectListProps) {
-    const [projectBeingEdited,setProjectBeingEdited] = useState({});
-    const handleEdit = (project: Project) => {              
+function ProjectList({ project
+    // , onSave
+ }: ProjectListProps) {
+    const [projectBeingEdited, setProjectBeingEdited] = useState({});
+    const handleEdit = (project: Project) => {
         // console.log(project);
         setProjectBeingEdited(project);
     };
@@ -29,6 +31,7 @@ function ProjectList({ project, onSave }: ProjectListProps) {
         <div className="row">
             {project.map((project) => (
                 <div key={project.id} className="cols-sm">
+                    <label data-testid="listLabel">List</label>
                     {/* <div className="card">
                         <img src={project.imageUrl} alt={project.name}/>
                         <section className="section dark">
@@ -41,7 +44,9 @@ function ProjectList({ project, onSave }: ProjectListProps) {
                     </div> */}
                     {/* <ProjectCard project={project} onEdit={handleEdit}></ProjectCard>       
                     <ProjectForm /> */}
-                    {project === projectBeingEdited? (<ProjectForm onSave={onSave}onCancel={cancelEditing}/>):(<ProjectCard project={project} onEdit={handleEdit}></ProjectCard>
+                    {project === projectBeingEdited ? (<ProjectForm project={project}
+                    //  onSave={onSave}
+                    onCancel={cancelEditing} />) : (<ProjectCard project={project} onEdit={handleEdit}></ProjectCard>
                     )}
                 </div>
             ))}
