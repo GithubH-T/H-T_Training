@@ -31,7 +31,7 @@ function ProjectList({ project
         <div className="row">
             {project.map((project) => (
                 <div key={project.id} className="cols-sm">
-                    <label data-testid="listLabel">List</label>
+                    <label>List</label>
                     {/* <div className="card">
                         <img src={project.imageUrl} alt={project.name}/>
                         <section className="section dark">

@@ -9,5 +9,5 @@ xtest('renders learn react link', () => {
 });
 
 test('should render without crashing', () => {
-  render(<App />);
+  render(<App />)
 });

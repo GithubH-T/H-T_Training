@@ -5,15 +5,3 @@ exports[`<HPage/> snapshot 1`] = `
   Home
 </h2>
 `;
-
-exports[`<HoPage/> snapshot 1`] = `
-<h2>
-  Home
-</h2>
-`;
-
-exports[`<HomePage/> snapshot 1`] = `
-<h2>
-  Home
-</h2>
-`;

@@ -1,20 +1,25 @@
 import { screen } from "@testing-library/dom";
-import { render } from "react-dom";
 import { MemoryRouter } from "react-router";
 import { Project } from "./project"
 import ProjectCard from "./ProjectCard";
 import renderer from 'react-test-renderer';
 import userEvent from "@testing-library/user-event";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { render } from "@testing-library/react";
 
 describe("<PC/>", () => {
     let project: Project
     let handleEdit: jest.Mock;
-
+    const queryClient = new QueryClient()
     // Refactor the ProjectCard-test.tsx to use use a setup function to render the component at the start of each test.
     const setup = () => {
-        <MemoryRouter>
-            render(<ProjectCard project={project} onEdit={handleEdit} />);
-        </MemoryRouter>
+        render(
+            <MemoryRouter>
+                <QueryClientProvider client={queryClient}>
+                    <ProjectCard project={project} onEdit={handleEdit} />
+                </QueryClientProvider>
+            </MemoryRouter>
+        );
     }
 
     beforeEach(() => {
@@ -32,10 +37,10 @@ describe("<PC/>", () => {
     it("renders project properly", () => {
         setup();
         // expect(screen.getByRole("heading")).toHaveTextContent(project.name);
-        const abc=screen.getByRole("heading");
+        const abc = screen.getByRole("heading");
         expect(abc).toHaveTextContent(project.name);
         screen.getByText(/this is really difficult\.\.\./i);
-        screen.getByText(/budget : 100/i);
+        screen.getByText(/100/);
     })
     it("handler called when edit clicked", async () => {
         setup();
@@ -45,7 +50,12 @@ describe("<PC/>", () => {
         expect(handleEdit).toBeCalledWith(project)
     })
     test("snapshot", () => {
-        const tree = renderer.create(setup()).toJSON();
+        const tree = renderer.create(
+            <MemoryRouter>
+                <ProjectCard project={project} onEdit={handleEdit} />
+            </MemoryRouter>
+            // here I have not used queryselector how it is working ffine here check it!! and check queryclient concept as well under lab 27
+        ).toJSON();
         expect(tree).toMatchSnapshot();
     })
 })

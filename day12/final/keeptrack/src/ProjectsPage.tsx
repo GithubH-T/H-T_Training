@@ -89,7 +89,7 @@ function ProjectsPage() {
   return (
     <Fragment>
     <>
-      <h1 data-testid="heading">Projects</h1>
+      <h1 >Projects</h1>
       {error && (
         <div className="row">
           <div className="card large error">

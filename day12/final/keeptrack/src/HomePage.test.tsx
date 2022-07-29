@@ -22,6 +22,6 @@ describe("<HPage/>",() => {
     })
     test("snapshot",()=> {
         const tree=renderer.create(<HomePage/>).toJSON();
-        expect(tree).toMatchSnapshot()
+        expect(tree).toMatchSnapshot();
     })
 })

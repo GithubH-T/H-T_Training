@@ -2,7 +2,7 @@ import { Project } from "./project";
 
 
 const baseUrl = "http://localhost:4000";
-const url = `${baseUrl}/projects`;
+export const url = `${baseUrl}/projects`;
 // const url = `${baseUrl}/fail`;
 
 function translateStatusToErrorMessage(status: number) {
